@@ -1,1 +1,279 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Guest Post Price Calculator | Free SEO Tool</title>
+
+    <meta name="description" content="Free guest post price calculator. Estimate guest post and backlink prices based on domain authority, traffic, niche and link type.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container nav">
+        <div class="logo">
+            SEO<span>Tools</span>
+        </div>
+
+        <nav>
+            <a href="#calculator">Calculator</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#about">About</a>
+        </nav>
+    </div>
+</header>
+
+
+<section class="hero">
+    <div class="container hero-content">
+
+        <div class="hero-text">
+            <div class="badge">FREE SEO TOOL</div>
+
+            <h1>
+                Guest Post Price
+                <span>Calculator</span>
+            </h1>
+
+            <p>
+                Estimate the value of a guest post or backlink
+                using domain authority, traffic, niche and link type.
+            </p>
+
+            <a href="#calculator" class="hero-button">
+                Calculate Price ↓
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="calculator-section" id="calculator">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span>GUEST POST TOOL</span>
+            <h2>Calculate Guest Post Price</h2>
+            <p>
+                Enter the website details below to get an estimated
+                guest post price.
+            </p>
+        </div>
+
+
+        <div class="calculator-card">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="dr">Domain Rating (DR)</label>
+
+                    <input
+                        type="number"
+                        id="dr"
+                        min="0"
+                        max="100"
+                        placeholder="Example: 40"
+                    >
+
+                    <small>Enter DR from 0 to 100</small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="traffic">Monthly Organic Traffic</label>
+
+                    <input
+                        type="number"
+                        id="traffic"
+                        min="0"
+                        placeholder="Example: 10000"
+                    >
+
+                    <small>Estimated monthly organic visitors</small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="country">Main Traffic Country</label>
+
+                    <select id="country">
+                        <option value="1">United States</option>
+                        <option value="0.9">United Kingdom</option>
+                        <option value="0.8">Canada</option>
+                        <option value="0.7">Australia</option>
+                        <option value="0.55">Germany</option>
+                        <option value="0.45">France</option>
+                        <option value="0.35">India</option>
+                        <option value="0.3">Pakistan</option>
+                        <option value="0.3">Other</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="niche">Website Niche</label>
+
+                    <select id="niche">
+                        <option value="1.25">Finance</option>
+                        <option value="1.2">Business</option>
+                        <option value="1.15">Technology</option>
+                        <option value="1.1">Marketing / SEO</option>
+                        <option value="1">Health</option>
+                        <option value="0.95">Education</option>
+                        <option value="0.9">Travel</option>
+                        <option value="0.85">Lifestyle</option>
+                        <option value="0.8">General</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group full-width">
+                    <label for="linkType">Link Type</label>
+
+                    <select id="linkType">
+                        <option value="1.15">DoFollow</option>
+                        <option value="0.75">NoFollow</option>
+                        <option value="0.9">Sponsored</option>
+                    </select>
+                </div>
+
+            </div>
+
+
+            <button class="calculate-button" onclick="calculatePrice()">
+                Calculate Guest Post Price
+            </button>
+
+
+            <div id="result" class="result-box">
+
+                <div class="result-label">
+                    Estimated Guest Post Price
+                </div>
+
+                <div class="price" id="price">
+                    $0
+                </div>
+
+                <p id="resultText">
+                    Enter your website details and calculate the estimated price.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="features" id="how-it-works">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span>HOW IT WORKS</span>
+            <h2>How Our Calculator Works</h2>
+        </div>
+
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+                <div class="feature-number">01</div>
+                <h3>Enter Website Data</h3>
+                <p>
+                    Add the website's DR, monthly traffic,
+                    country and niche.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div class="feature-number">02</div>
+                <h3>Choose Link Type</h3>
+                <p>
+                    Select whether the backlink is DoFollow,
+                    NoFollow or Sponsored.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div class="feature-number">03</div>
+                <h3>Get Estimated Price</h3>
+                <p>
+                    Our calculator provides an estimated
+                    guest post price instantly.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="about" id="about">
+
+    <div class="container about-content">
+
+        <div>
+            <span class="section-label">ABOUT THE TOOL</span>
+
+            <h2>
+                Simple SEO Pricing Calculator
+            </h2>
+        </div>
+
+        <div>
+            <p>
+                This free tool helps SEO freelancers, agencies,
+                publishers and website owners estimate guest post
+                and backlink prices.
+            </p>
+
+            <p>
+                The result is an estimate based on several website
+                metrics and should be used as a starting point when
+                negotiating guest post prices.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div class="container footer-content">
+
+        <div>
+            <strong>SEO Tools</strong>
+            <p>Free SEO & guest post tools for everyone.</p>
+        </div>
+
+        <div>
+            <p>© 2026 SEO Tools. All rights reserved.</p>
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
