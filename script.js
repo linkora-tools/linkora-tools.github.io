@@ -1,17 +1,37 @@
+function calculateGuestPost() {
 
-function calculatePrice() {
+    const dr = Number(
+        document.getElementById("gp-dr").value
+    );
 
-    const dr = Number(document.getElementById("dr").value);
-    const traffic = Number(document.getElementById("traffic").value);
+    const traffic = Number(
+        document.getElementById("gp-traffic").value
+    );
 
-    const country = Number(document.getElementById("country").value);
-    const niche = Number(document.getElementById("niche").value);
-    const linkType = Number(document.getElementById("linkType").value);
+    const country = Number(
+        document.getElementById("gp-country").value
+    );
 
-    const priceElement = document.getElementById("price");
-    const resultText = document.getElementById("resultText");
+    const niche = Number(
+        document.getElementById("gp-niche").value
+    );
 
-    if (dr < 0 || dr > 100 || isNaN(dr)) {
+    const linkType = Number(
+        document.getElementById("gp-link").value
+    );
+
+    const priceElement =
+        document.getElementById("gp-price");
+
+    const resultText =
+        document.getElementById("gp-result");
+
+
+    if (
+        isNaN(dr) ||
+        dr < 0 ||
+        dr > 100
+    ) {
 
         priceElement.innerText = "$0";
 
@@ -21,7 +41,11 @@ function calculatePrice() {
         return;
     }
 
-    if (traffic < 0 || isNaN(traffic)) {
+
+    if (
+        isNaN(traffic) ||
+        traffic < 0
+    ) {
 
         priceElement.innerText = "$0";
 
@@ -32,42 +56,44 @@ function calculatePrice() {
     }
 
 
-    /*
-        Basic estimated pricing formula.
+    const authorityValue =
+        dr * 2;
 
-        This is an initial calculator formula.
-        It is NOT a guaranteed market price.
-    */
-
-    const authorityValue = dr * 2;
 
     const trafficValue =
         Math.log10(traffic + 1) * 18;
 
-    let basePrice =
+
+    const basePrice =
         15 +
         authorityValue +
         trafficValue;
 
 
-    let estimatedPrice =
+    const estimatedPrice =
         basePrice *
         country *
         niche *
         linkType;
 
 
-    estimatedPrice = Math.max(
-        25,
-        estimatedPrice
-    );
+    const finalPrice =
+        Math.max(
+            25,
+            estimatedPrice
+        );
 
 
     const lowerPrice =
-        Math.round(estimatedPrice * 0.8);
+        Math.round(
+            finalPrice * 0.8
+        );
+
 
     const upperPrice =
-        Math.round(estimatedPrice * 1.2);
+        Math.round(
+            finalPrice * 1.2
+        );
 
 
     priceElement.innerText =
@@ -78,7 +104,124 @@ function calculatePrice() {
 
 
     resultText.innerText =
-        "Estimated price based on the information you provided. " +
-        "Actual guest post prices can vary depending on the website, " +
-        "publisher and market demand.";
+        "Estimated guest post price based on the information you provided. Actual prices may vary by publisher and market.";
+}
+
+
+/* ================= BACKLINK CALCULATOR ================= */
+
+
+function calculateBacklink() {
+
+    const dr = Number(
+        document.getElementById("bl-dr").value
+    );
+
+    const traffic = Number(
+        document.getElementById("bl-traffic").value
+    );
+
+    const country = Number(
+        document.getElementById("bl-country").value
+    );
+
+    const niche = Number(
+        document.getElementById("bl-niche").value
+    );
+
+    const linkType = Number(
+        document.getElementById("bl-link").value
+    );
+
+    const placement = Number(
+        document.getElementById("bl-placement").value
+    );
+
+
+    const priceElement =
+        document.getElementById("bl-price");
+
+    const resultText =
+        document.getElementById("bl-result");
+
+
+    if (
+        isNaN(dr) ||
+        dr < 0 ||
+        dr > 100
+    ) {
+
+        priceElement.innerText = "$0";
+
+        resultText.innerText =
+            "Please enter a valid Domain Rating between 0 and 100.";
+
+        return;
+    }
+
+
+    if (
+        isNaN(traffic) ||
+        traffic < 0
+    ) {
+
+        priceElement.innerText = "$0";
+
+        resultText.innerText =
+            "Please enter a valid monthly traffic number.";
+
+        return;
+    }
+
+
+    const authorityValue =
+        dr * 2.5;
+
+
+    const trafficValue =
+        Math.log10(traffic + 1) * 20;
+
+
+    const basePrice =
+        20 +
+        authorityValue +
+        trafficValue;
+
+
+    const estimatedPrice =
+        basePrice *
+        country *
+        niche *
+        linkType *
+        placement;
+
+
+    const finalPrice =
+        Math.max(
+            25,
+            estimatedPrice
+        );
+
+
+    const lowerPrice =
+        Math.round(
+            finalPrice * 0.8
+        );
+
+
+    const upperPrice =
+        Math.round(
+            finalPrice * 1.2
+        );
+
+
+    priceElement.innerText =
+        "$" +
+        lowerPrice +
+        " - $" +
+        upperPrice;
+
+
+    resultText.innerText =
+        "Estimated backlink value based on the information you provided. Actual prices may vary by publisher and market.";
 }
