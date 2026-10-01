@@ -14,7 +14,7 @@
 
     <meta
         name="description"
-        content="Free SEO tools for guest post pricing, backlink pricing and website analysis."
+        content="Free SEO tools for guest post pricing, backlink pricing, article indexing and website analysis."
     >
 
     <link
@@ -53,6 +53,10 @@
                 Backlink
             </a>
 
+            <a href="#article-indexer">
+                Article Indexer
+            </a>
+
             <a href="#about">
                 About
             </a>
@@ -88,8 +92,9 @@
 
 
         <p>
-            Calculate guest post prices, backlink values
-            and discover useful SEO tools — completely free.
+            Calculate guest post prices, backlink values,
+            check article indexing requirements and discover
+            useful SEO tools — completely free.
         </p>
 
 
@@ -128,7 +133,7 @@
 
             <p>
                 Simple and useful tools for SEO professionals,
-                bloggers and website owners.
+                bloggers, website owners and content publishers.
             </p>
 
         </div>
@@ -194,7 +199,35 @@
 
 
 
-            <!-- TOOL 3 -->
+            <!-- TOOL 3 - ARTICLE INDEXER -->
+
+            <a
+                href="#article-indexer"
+                class="tool-card active-tool"
+            >
+
+                <div class="tool-icon">
+                    🚀
+                </div>
+
+                <h3>
+                    Article Indexer
+                </h3>
+
+                <p>
+                    Submit your article URL for indexing and
+                    check important indexing requirements.
+                </p>
+
+                <span class="tool-link">
+                    Use Article Indexer →
+                </span>
+
+            </a>
+
+
+
+            <!-- TOOL 4 -->
 
             <div class="tool-card">
 
@@ -218,7 +251,7 @@
 
 
 
-            <!-- TOOL 4 -->
+            <!-- TOOL 5 -->
 
             <div class="tool-card">
 
@@ -243,7 +276,7 @@
 
 
 
-            <!-- TOOL 5 -->
+            <!-- TOOL 6 -->
 
             <div class="tool-card">
 
@@ -268,7 +301,7 @@
 
 
 
-            <!-- TOOL 6 -->
+            <!-- TOOL 7 -->
 
             <div class="tool-card">
 
@@ -293,7 +326,7 @@
 
 
 
-            <!-- TOOL 7 -->
+            <!-- TOOL 8 -->
 
             <div class="tool-card">
 
@@ -318,7 +351,7 @@
 
 
 
-            <!-- TOOL 8 -->
+            <!-- TOOL 9 -->
 
             <div class="tool-card">
 
@@ -342,7 +375,7 @@
 
 
 
-            <!-- TOOL 9 -->
+            <!-- TOOL 10 -->
 
             <div class="tool-card">
 
@@ -835,6 +868,96 @@
                 <p id="bl-result">
                     Enter your website information
                     and click calculate.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ARTICLE INDEXER ================= -->
+
+<section
+    class="calculator-section"
+    id="article-indexer"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <span>
+                SEO TOOL
+            </span>
+
+            <h2>
+                Article Indexer
+            </h2>
+
+            <p>
+                Submit your article URL and start the
+                indexing process.
+            </p>
+
+        </div>
+
+
+
+        <div class="calculator-card">
+
+
+            <div class="form-group">
+
+                <label for="article-url">
+                    Article URL
+                </label>
+
+                <input
+                    type="url"
+                    id="article-url"
+                    placeholder="https://example.com/my-article"
+                    required
+                >
+
+                <small>
+                    Enter the complete URL of the article.
+                </small>
+
+            </div>
+
+
+
+            <button
+                class="calculate-button"
+                type="button"
+                onclick="submitArticleForIndexing()"
+            >
+                Submit Article →
+            </button>
+
+
+
+            <div class="result-box">
+
+                <div class="result-label">
+                    Indexing Status
+                </div>
+
+                <div
+                    class="price"
+                    id="article-status"
+                >
+                    Ready
+                </div>
+
+                <p id="article-result">
+                    Enter an article URL and click Submit Article.
                 </p>
 
             </div>
