@@ -1,3 +1,10 @@
+/* =========================================================
+   LINKORA SEO TOOLS
+   ========================================================= */
+
+
+/* ================= GUEST POST CALCULATOR ================= */
+
 function calculateGuestPost() {
 
     const dr = Number(
@@ -59,16 +66,13 @@ function calculateGuestPost() {
     const authorityValue =
         dr * 2;
 
-
     const trafficValue =
         Math.log10(traffic + 1) * 18;
-
 
     const basePrice =
         15 +
         authorityValue +
         trafficValue;
-
 
     const estimatedPrice =
         basePrice *
@@ -76,19 +80,16 @@ function calculateGuestPost() {
         niche *
         linkType;
 
-
     const finalPrice =
         Math.max(
             25,
             estimatedPrice
         );
 
-
     const lowerPrice =
         Math.round(
             finalPrice * 0.8
         );
-
 
     const upperPrice =
         Math.round(
@@ -109,7 +110,6 @@ function calculateGuestPost() {
 
 
 /* ================= BACKLINK CALCULATOR ================= */
-
 
 function calculateBacklink() {
 
@@ -177,16 +177,13 @@ function calculateBacklink() {
     const authorityValue =
         dr * 2.5;
 
-
     const trafficValue =
         Math.log10(traffic + 1) * 20;
-
 
     const basePrice =
         20 +
         authorityValue +
         trafficValue;
-
 
     const estimatedPrice =
         basePrice *
@@ -195,19 +192,16 @@ function calculateBacklink() {
         linkType *
         placement;
 
-
     const finalPrice =
         Math.max(
             25,
             estimatedPrice
         );
 
-
     const lowerPrice =
         Math.round(
             finalPrice * 0.8
         );
-
 
     const upperPrice =
         Math.round(
@@ -229,7 +223,6 @@ function calculateBacklink() {
 
 /* ================= ARTICLE INDEXER ================= */
 
-
 function submitArticleForIndexing() {
 
     const urlInput =
@@ -242,9 +235,27 @@ function submitArticleForIndexing() {
         document.getElementById("article-result");
 
 
+    /* Make sure the Article Indexer elements exist */
+
+    if (
+        !urlInput ||
+        !statusElement ||
+        !resultElement
+    ) {
+
+        console.error(
+            "Article Indexer elements were not found."
+        );
+
+        return;
+    }
+
+
     const articleUrl =
         urlInput.value.trim();
 
+
+    /* Empty URL */
 
     if (!articleUrl) {
 
@@ -258,12 +269,14 @@ function submitArticleForIndexing() {
     }
 
 
-    let url;
+    /* Validate URL */
 
+    let url;
 
     try {
 
-        url = new URL(articleUrl);
+        url =
+            new URL(articleUrl);
 
     } catch (error) {
 
@@ -276,6 +289,8 @@ function submitArticleForIndexing() {
         return;
     }
 
+
+    /* Only HTTP / HTTPS URLs */
 
     if (
         url.protocol !== "http:" &&
@@ -292,21 +307,66 @@ function submitArticleForIndexing() {
     }
 
 
+    /* Show processing state */
+
     statusElement.innerText =
         "Checking...";
 
     resultElement.innerText =
-        "Checking the article URL and preparing the indexing request...";
+        "Checking the article URL. Please wait...";
 
+
+    /* Disable button while checking */
+
+    const button =
+        document.querySelector(
+            '#article-indexer button[onclick="submitArticleForIndexing()"]'
+        );
+
+
+    if (button) {
+
+        button.disabled = true;
+
+        button.innerText =
+            "Checking...";
+
+    }
+
+
+    /* Temporary frontend processing */
 
     setTimeout(function () {
 
         statusElement.innerText =
-            "Ready";
+            "URL Received";
 
         resultElement.innerText =
-            "Article URL received successfully. The indexing request system will be connected to the backend in the next step.";
+            "Your article URL has been received successfully. The indexing process is ready for backend connection.";
 
-    }, 1200);
+        if (button) {
+
+            button.disabled = false;
+
+            button.innerText =
+                "Submit Article →";
+
+        }
+
+    }, 1500);
 
 }
+
+
+/* ================= PAGE READY CHECK ================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        console.log(
+            "Linkora script loaded successfully."
+        );
+
+    }
+);
