@@ -223,7 +223,86 @@ function calculateBacklink() {
 
 /* ================= ARTICLE INDEXER ================= */
 
-function submitArticleForIndexing() {
+async function submitArticleForIndexing() {
+    const urlInput = document.getElementById("article-url");
+    const statusElement = document.getElementById("article-status");
+    const resultElement = document.getElementById("article-result");
+
+    const articleUrl = urlInput.value.trim();
+
+    if (!articleUrl) {
+        statusElement.innerText = "Error";
+        resultElement.innerText = "Please enter an article URL.";
+        return;
+    }
+
+    try {
+        new URL(articleUrl);
+    } catch {
+        statusElement.innerText = "Invalid URL";
+        resultElement.innerText =
+            "Please enter a valid URL, for example: https://example.com/article";
+        return;
+    }
+
+    statusElement.innerText = "Checking...";
+    resultElement.innerText =
+        "Connecting to Linkora indexing system...";
+
+    try {
+        const response = await fetch(
+            "https://soft-mouse-39bf.faizanyaseen74191.workers.dev/api/index",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    url: articleUrl
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            statusElement.innerText = "Check Failed";
+            resultElement.innerText =
+                data.message || "Unable to process this article.";
+            return;
+        }
+
+        statusElement.innerText = "Checked ✓";
+
+        let message = data.message || "Article checked successfully.";
+
+        if (data.title) {
+            message += "\n\nTitle: " + data.title;
+        }
+
+        if (data.noindex) {
+            message +=
+                "\n\n⚠️ This article has a noindex directive.";
+        } else {
+            message +=
+                "\n\n✓ No noindex directive detected.";
+        }
+
+        if (data.canonical) {
+            message +=
+                "\nCanonical: " + data.canonical;
+        }
+
+        resultElement.innerText = message;
+
+    } catch (error) {
+        console.error(error);
+
+        statusElement.innerText = "Connection Error";
+        resultElement.innerText =
+            "Unable to connect to the Linkora backend. Please try again.";
+    }
+} {
 
     const urlInput =
         document.getElementById("article-url");
