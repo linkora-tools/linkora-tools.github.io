@@ -225,3 +225,88 @@ function calculateBacklink() {
     resultText.innerText =
         "Estimated backlink value based on the information you provided. Actual prices may vary by publisher and market.";
 }
+
+
+/* ================= ARTICLE INDEXER ================= */
+
+
+function submitArticleForIndexing() {
+
+    const urlInput =
+        document.getElementById("article-url");
+
+    const statusElement =
+        document.getElementById("article-status");
+
+    const resultElement =
+        document.getElementById("article-result");
+
+
+    const articleUrl =
+        urlInput.value.trim();
+
+
+    if (!articleUrl) {
+
+        statusElement.innerText =
+            "Error";
+
+        resultElement.innerText =
+            "Please enter an article URL.";
+
+        return;
+    }
+
+
+    let url;
+
+
+    try {
+
+        url = new URL(articleUrl);
+
+    } catch (error) {
+
+        statusElement.innerText =
+            "Invalid URL";
+
+        resultElement.innerText =
+            "Please enter a valid article URL, for example: https://example.com/article";
+
+        return;
+    }
+
+
+    if (
+        url.protocol !== "http:" &&
+        url.protocol !== "https:"
+    ) {
+
+        statusElement.innerText =
+            "Invalid URL";
+
+        resultElement.innerText =
+            "Please use a URL starting with https:// or http://";
+
+        return;
+    }
+
+
+    statusElement.innerText =
+        "Checking...";
+
+    resultElement.innerText =
+        "Checking the article URL and preparing the indexing request...";
+
+
+    setTimeout(function () {
+
+        statusElement.innerText =
+            "Ready";
+
+        resultElement.innerText =
+            "Article URL received successfully. The indexing request system will be connected to the backend in the next step.";
+
+    }, 1200);
+
+}
